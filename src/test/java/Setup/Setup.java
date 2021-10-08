@@ -22,10 +22,10 @@ public class Setup {
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
     }
-//    @AfterTest
-//    public void Logout() {
-//        driver.close();
-//
-//    }
+    @AfterTest
+    public void Logout() {
+        driver.close();
+
+    }
 
 }

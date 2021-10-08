@@ -52,10 +52,10 @@ public class CommentIdea {
         passwordBox.sendKeys("a@123456#");
         Thread.sleep(2000);
         LogInBtn.click();
-        SubmitIdeaBtn.click();
         wait = new WebDriverWait(driver, 50);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[4]/div/div/div[2]/div[1]/div/div[2]/button[2]")));
-        //Thread.sleep(10000);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Accept')]"))).click();
+        wait = new WebDriverWait(driver, 50);
+        wait.until(ExpectedConditions.elementToBeClickable(By.id("new-idea-button"))).click();
         wait = new WebDriverWait(driver, 50);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Accept')]"))).click();
         Thread.sleep(7000);
