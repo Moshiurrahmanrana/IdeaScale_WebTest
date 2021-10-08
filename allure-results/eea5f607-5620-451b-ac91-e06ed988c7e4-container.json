@@ -1,0 +1,1 @@
+{"uuid":"eea5f607-5620-451b-ac91-e06ed988c7e4","name":"Create a campaign","children":["bbfa9bff-390c-4c0e-a4eb-f1fbc07c9826"],"befores":[{"name":"setUp","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1633682675245,"stop":1633682681112}],"afters":[],"start":1633682675221,"stop":1633682725091}

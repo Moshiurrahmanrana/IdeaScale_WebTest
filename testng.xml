@@ -1,0 +1,23 @@
+<suite name="IdeaScale Web automation" verbose="1" thread-count="1">
+
+    <test name="Create a campaign">
+        <classes>
+            <class name="TestRunner.CreateCampaignTestRunner"/>
+        </classes>
+    </test>
+    <test name="Idea submission under this campaign">
+        <classes>
+            <class name="TestRunner.IdeaSubmissionTestRunner"/>
+        </classes>
+    </test>
+    <test name="Upvote in an idea">
+        <classes>
+            <class name="TestRunner.UpVoteTestRunner"/>
+        </classes>
+    </test>
+    <test name="Comment in an idea">
+        <classes>
+            <class name="TestRunner.CommentIdeaTestRunner"/>
+        </classes>
+    </test>
+</suite>

@@ -16,7 +16,7 @@ public class UpVoteTestRunner extends Setup {
     public void doUpVote() throws Exception {
         objUpvoteIdea = new UpvoteIdea(driver);
         String result = objUpvoteIdea.upVote();
-        Assert.assertTrue(result.contains("1"));
+        Assert.assertEquals(result,"1");
 
     }
 }
