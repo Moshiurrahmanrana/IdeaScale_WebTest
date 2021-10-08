@@ -50,32 +50,34 @@ public class CommentIdea {
         action.click(list.get(0)).perform();
         EmailBox.sendKeys("trialqa.ideascale@gmail.com");
         passwordBox.sendKeys("a@123456#");
+        Thread.sleep(2000);
         LogInBtn.click();
         SubmitIdeaBtn.click();
         wait = new WebDriverWait(driver, 50);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[4]/div/div/div[2]/div[1]/div/div[2]/button[2]")));
         //Thread.sleep(10000);
-        cookiesBtn.click();
         wait = new WebDriverWait(driver, 50);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Accept')]"))).click();
-
+        Thread.sleep(7000);
         List<WebElement> campaignDropdown = driver.findElements(By.cssSelector("[role=combobox]"));
         Actions action2 = new Actions(driver);
         action2.click(campaignDropdown.get(0)).perform();
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         campaignDropdown.get(0).sendKeys(Keys.ARROW_DOWN);
         campaignDropdown.get(0).sendKeys(Keys.ENTER);
-        Thread.sleep(1000);
-        TitleBox.click();
-        TitleBox.sendKeys("hlw");
+
+        wait = new WebDriverWait(driver, 50);
+        wait.until(ExpectedConditions.elementToBeClickable(By.id("idea-title-input"))).sendKeys("Hlw");
+//        TitleBox.click();
+//        TitleBox.sendKeys("hlw");
         Thread.sleep(3000);
         DescriptionBox.sendKeys("this is description");
-        Thread.sleep(7000);
-//        wait = new WebDriverWait(driver, 50);
-//        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[5]/div/div/div/article/form/div[4]/div/button")));
-        SubmitBtn.click();
-        Thread.sleep(5000);
-        commentBox.sendKeys("This is good Idea");
+//        Thread.sleep(7000);
+        wait = new WebDriverWait(driver, 50);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[5]/div/div/div/article/form/div[4]/div/button"))).click();
+        wait = new WebDriverWait(driver, 50);
+        wait.until(ExpectedConditions.elementToBeClickable(By.id("comment-text"))).sendKeys("This is good Idea");
+
         SubmitComment.click();
         return commentShow.getText();
     }

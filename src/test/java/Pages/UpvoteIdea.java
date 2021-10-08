@@ -5,10 +5,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class UpvoteIdea {
@@ -49,12 +47,15 @@ public class UpvoteIdea {
         action.click(list.get(0)).perform();
         EmailBox.sendKeys("trialqa.ideascale@gmail.com");
         passwordBox.sendKeys("a@123456#");
+        Thread.sleep(2000);
         LogInBtn.click();
         SubmitIdeaBtn.click();
         wait = new WebDriverWait(driver, 50);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[4]/div/div/div[2]/div[1]/div/div[2]/button[2]")));
         //Thread.sleep(10000);
-        cookiesBtn.click();
+        Actions actions = new Actions(driver);
+        List<WebElement> lists = driver.findElements(By.cssSelector("button"));
+        actions.click(lists.get(1)).perform();
         wait = new WebDriverWait(driver, 50);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Accept')]"))).click();
 
@@ -69,12 +70,10 @@ public class UpvoteIdea {
         TitleBox.sendKeys("hlw");
         Thread.sleep(3000);
         DescriptionBox.sendKeys("this is description");
-        Thread.sleep(7000);
-//        wait = new WebDriverWait(driver, 50);
-//        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[5]/div/div/div/article/form/div[4]/div/button")));
-        SubmitBtn.click();
-        Thread.sleep(5000);
-        upVoteBtn.click();
+        wait = new WebDriverWait(driver, 50);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[5]/div/div/div/article/form/div[4]/div/button"))).click();
+        wait = new WebDriverWait(driver, 50);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"vote-up-380805\"]"))).click();
         return count.getText();
     }
 }

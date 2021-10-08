@@ -50,8 +50,8 @@ public class IdeaSubmission {
     WebElement TitleBox;
     @FindBy(id = "idea-desc-value")
     WebElement DescriptionBox;
-    @FindBy(xpath = "/html/body/div[5]/div/div/div/article/form/div[4]/div/button")
-    WebElement SubmitBtn;
+    @FindBy(xpath = "/html/body/div[6]/div[2]/div/div[2]/div/span[19]")
+    WebElement date14;
 
     @FindBy(xpath = "/html/body/div[5]/div[1]/div[1]/div/article/header/h1")
     WebElement lblTitle;
@@ -71,7 +71,7 @@ public class IdeaSubmission {
         passwordBox.sendKeys("a@123456#");
         Thread.sleep(2000);
         LogInBtn.click();
-        wait = new WebDriverWait(driver, 20);
+        wait = new WebDriverWait(driver, 50);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Accept')]"))).click();
         Thread.sleep(10000);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@class='is-svg-icon topbar-icon arrow-icon']"))).click();
@@ -88,17 +88,14 @@ public class IdeaSubmission {
         NameText.sendKeys("Nothing");
         saveBtn.click();
         ScheduleBtn.click();
-        Thread.sleep(5000);
-        WebElement LaunchDate= driver.findElement(By.id("/html/body/div[5]/div[1]/div/section/form/div/div[2]/section[1]/div[2]/div[1]/div/div/input[2]"));
-//        LaunchDate.clear();
-        LaunchDate.sendKeys("12/Oct/21 12:00 PM");
+
+        wait = new WebDriverWait(driver, 50);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[5]/div[1]/div/section/form/div/div[2]/section[1]/div[2]/div[1]/div/div/input[2]"))).click();
+        date14.click();
         Launch.click();
         backBtn.click();
-        SubmitIdeaBtn.click();
         wait = new WebDriverWait(driver, 50);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[4]/div/div/div[2]/div[1]/div/div[2]/button[2]")));
-        //Thread.sleep(10000);
-        cookiesBtn.click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.id("new-idea-button"))).click();
         wait = new WebDriverWait(driver, 50);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Accept')]"))).click();
 
@@ -113,10 +110,9 @@ public class IdeaSubmission {
         TitleBox.sendKeys("Title");
         Thread.sleep(3000);
         DescriptionBox.sendKeys("this is description");
-        Thread.sleep(7000);
-//        wait = new WebDriverWait(driver, 50);
-//        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[5]/div/div/div/article/form/div[4]/div/button")));
-        SubmitBtn.click();
+        wait = new WebDriverWait(driver, 50);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[5]/div/div/div/article/form/div[4]/div/button"))).click();
+
         Thread.sleep(5000);
         return lblTitle.getText();
     }

@@ -12,7 +12,7 @@ public class CommentIdeaTestRunner extends Setup {
     public void doComment() throws Exception {
         objCommentIdea = new CommentIdea(driver);
         String result = objCommentIdea.Comment();
-        Assert.assertEquals(result,"1");
+        Assert.assertTrue(result.contains("This is good Idea"));
 
     }
 }

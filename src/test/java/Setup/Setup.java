@@ -1,8 +1,10 @@
 package Setup;
 
+import org.junit.After;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
 
@@ -20,5 +22,10 @@ public class Setup {
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
     }
+//    @AfterTest
+//    public void Logout() {
+//        driver.close();
+//
+//    }
 
 }

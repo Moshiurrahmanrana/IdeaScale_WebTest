@@ -58,7 +58,7 @@ public class CreateCampaign {
         passwordBox.sendKeys("a@123456#");
         Thread.sleep(2000);
         LogInBtn.click();
-        wait = new WebDriverWait(driver, 20);
+        wait = new WebDriverWait(driver, 50);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Accept')]"))).click();
         Thread.sleep(10000);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@class='is-svg-icon topbar-icon arrow-icon']"))).click();
@@ -68,7 +68,7 @@ public class CreateCampaign {
         driver.switchTo().window(w.get(1));
         EngageBtn.click();
         campaignsBtn.click();
-        Thread.sleep(10000);
+//        Thread.sleep(10000);
         ArrayList<String> h = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(h.get(2));
         CreateCamBtn.click();
