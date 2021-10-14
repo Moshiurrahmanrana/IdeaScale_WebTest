@@ -24,7 +24,7 @@ public class Setup {
     }
     @AfterTest
     public void Logout() {
-//        driver.close();
+        driver.quit();
 
     }
 

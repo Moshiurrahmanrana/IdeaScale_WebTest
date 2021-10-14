@@ -61,7 +61,7 @@ public class CreateCampaign {
         wait = new WebDriverWait(driver, 50);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[5]/section/div/div/form/div[4]/button"))).click();
         Thread.sleep(2000);
-        wait = new WebDriverWait(driver, 50);
+        wait = new WebDriverWait(driver, 70);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Accept')]"))).click();
         Thread.sleep(10000);
         wait = new WebDriverWait(driver, 50);

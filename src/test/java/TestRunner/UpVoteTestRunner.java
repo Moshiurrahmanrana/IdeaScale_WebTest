@@ -12,7 +12,7 @@ public class UpVoteTestRunner extends Setup {
     public void Vote() throws Exception {
         objUpvoteIdea = new UpvoteIdea(driver);
         String result = objUpvoteIdea.upVote();
-        Assert.assertEquals(result,1);
+        Assert.assertEquals(result,"1");
 
     }
 }

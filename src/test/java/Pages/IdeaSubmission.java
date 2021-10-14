@@ -72,8 +72,8 @@ public class IdeaSubmission {
         //LogInBtn
         wait = new WebDriverWait(driver, 50);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[5]/section/div/div/form/div[4]/button"))).click();
-
-        wait = new WebDriverWait(driver, 50);
+        Thread.sleep(2000);
+        wait = new WebDriverWait(driver, 70);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Accept')]"))).click();
         Thread.sleep(10000);
         wait = new WebDriverWait(driver, 100);
@@ -97,7 +97,7 @@ public class IdeaSubmission {
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[5]/div[1]/div/section/div[2]/div[1]/a[2]"))).click();
 //        CreateCamBtn.click();
         wait = new WebDriverWait(driver, 50);
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("category-name-field"))).sendKeys("Nothing");
+        wait.until(ExpectedConditions.elementToBeClickable(By.id("category-name-field"))).sendKeys("MyIdea");
         saveBtn.click();
         ScheduleBtn.click();
 
@@ -122,7 +122,8 @@ public class IdeaSubmission {
         campaignDropdown.get(0).sendKeys(Keys.ARROW_DOWN);
         campaignDropdown.get(0).sendKeys(Keys.ENTER);
         Thread.sleep(1000);
-        TitleBox.click();
+        wait = new WebDriverWait(driver, 50);
+        wait.until(ExpectedConditions.elementToBeClickable(By.id("idea-title-input"))).sendKeys(Keys.ENTER);
         TitleBox.sendKeys("Title");
         Thread.sleep(3000);
         DescriptionBox.sendKeys("this is description");

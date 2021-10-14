@@ -50,8 +50,8 @@ public class UpvoteIdea {
         passwordBox.sendKeys("a@123456#");
         Thread.sleep(2000);
         LogInBtn.click();
-        Thread.sleep(5000);
-        wait = new WebDriverWait(driver, 50);
+        Thread.sleep(2000);
+        wait = new WebDriverWait(driver, 70);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Accept')]"))).click();
         Thread.sleep(10000);
         wait = new WebDriverWait(driver, 50);
@@ -64,11 +64,11 @@ public class UpvoteIdea {
 
 //        wait = new WebDriverWait(driver, 50);
 //        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Accept')]"))).click();
-        Thread.sleep(10000);
+        Thread.sleep(5000);
         List<WebElement> campaignDropdown = driver.findElements(By.cssSelector("[role=combobox]"));
         Actions action2 = new Actions(driver);
         action2.click(campaignDropdown.get(0)).perform();
-        Thread.sleep(10000);
+        Thread.sleep(5000);
         campaignDropdown.get(0).sendKeys(Keys.ARROW_DOWN);
         campaignDropdown.get(0).sendKeys(Keys.ENTER);
         Thread.sleep(1000);
@@ -81,6 +81,7 @@ public class UpvoteIdea {
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//body[1]/div[5]/div[1]/div[1]/div[1]/article[1]/form[1]/div[4]/div[1]/button[1]"))).sendKeys(Keys.ENTER);
         wait = new WebDriverWait(driver, 50);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//body[1]/div[5]/div[1]/div[1]/div[1]/article[1]/div[5]/section[1]/div[1]/div[2]/a[1]"))).sendKeys(Keys.ENTER);
+        Thread.sleep(5000);
         return count.getText();
     }
 }
