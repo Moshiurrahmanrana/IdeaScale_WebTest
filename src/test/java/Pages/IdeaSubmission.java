@@ -69,23 +69,35 @@ public class IdeaSubmission {
         action.click(list.get(0)).perform();
         EmailBox.sendKeys("trialqa.ideascale@gmail.com");
         passwordBox.sendKeys("a@123456#");
-        Thread.sleep(2000);
-        LogInBtn.click();
+        //LogInBtn
+        wait = new WebDriverWait(driver, 50);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[5]/section/div/div/form/div[4]/button"))).click();
+
         wait = new WebDriverWait(driver, 50);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Accept')]"))).click();
         Thread.sleep(10000);
+        wait = new WebDriverWait(driver, 100);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@class='is-svg-icon topbar-icon arrow-icon']"))).click();
-        CommunityBtn.click();
+        wait = new WebDriverWait(driver, 50);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"utb-user-menu\"]/ul/li[2]/a"))).click();
+//        CommunityBtn.click();
         ArrayList<String> w = new ArrayList<String>(driver.getWindowHandles());
         //switch to open tab
         driver.switchTo().window(w.get(1));
-        EngageBtn.click();
-        campaignsBtn.click();
-        Thread.sleep(10000);
+        wait = new WebDriverWait(driver, 50);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(),'Engagement')]"))).click();
+//        EngageBtn.click();
+        wait = new WebDriverWait(driver, 50);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(),'Campaigns')]"))).click();
+//        campaignsBtn.click();
+//        Thread.sleep(10000);
         ArrayList<String> h = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(h.get(2));
-        CreateCamBtn.click();
-        NameText.sendKeys("Nothing");
+        wait = new WebDriverWait(driver, 50);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[5]/div[1]/div/section/div[2]/div[1]/a[2]"))).click();
+//        CreateCamBtn.click();
+        wait = new WebDriverWait(driver, 50);
+        wait.until(ExpectedConditions.elementToBeClickable(By.id("category-name-field"))).sendKeys("Nothing");
         saveBtn.click();
         ScheduleBtn.click();
 
@@ -94,10 +106,14 @@ public class IdeaSubmission {
         date14.click();
         Launch.click();
         backBtn.click();
-        wait = new WebDriverWait(driver, 50);
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("new-idea-button"))).click();
-        wait = new WebDriverWait(driver, 50);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Accept')]"))).click();
+        ArrayList<String> k = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(k.get(2));
+
+        Thread.sleep(20000);
+        wait = new WebDriverWait(driver, 100);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//body[1]/div[5]/header[1]/div[1]/a[1]"))).click();
+//        wait = new WebDriverWait(driver, 50);
+//        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Accept')]"))).click();
 
         List<WebElement> campaignDropdown = driver.findElements(By.cssSelector("[role=combobox]"));
         Actions action2 = new Actions(driver);
@@ -110,8 +126,9 @@ public class IdeaSubmission {
         TitleBox.sendKeys("Title");
         Thread.sleep(3000);
         DescriptionBox.sendKeys("this is description");
+        Thread.sleep(5000);
         wait = new WebDriverWait(driver, 50);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[5]/div/div/div/article/form/div[4]/div/button"))).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//body[1]/div[5]/div[1]/div[1]/div[1]/article[1]/form[1]/div[4]/div[1]/button[1]"))).sendKeys(Keys.ENTER);
 
         Thread.sleep(5000);
         return lblTitle.getText();

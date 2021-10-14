@@ -34,7 +34,7 @@ public class CommentIdea {
     WebElement commentBox;
     @FindBy(xpath = "/html/body/div[5]/div[1]/div[1]/div/article/div[7]/div/div/section[1]/div/div/form/div[5]/input")
     WebElement SubmitComment;
-    @FindBy(xpath = "/html/body/div[5]/div[1]/div[1]/div/article/div[7]/div/div/section[1]/div/ol/li/article/div[2]/div[1]/p")
+    @FindBy(xpath = "//body[1]/div[5]/div[1]/div[1]/div[1]/article[1]/div[7]/div[1]/div[1]/section[1]/div[1]/ol[1]/li[1]/article[1]/div[2]/div[1]/p[1]")
     WebElement commentShow;
 
     public CommentIdea(WebDriver driver) {
@@ -52,33 +52,40 @@ public class CommentIdea {
         passwordBox.sendKeys("a@123456#");
         Thread.sleep(2000);
         LogInBtn.click();
-        wait = new WebDriverWait(driver, 50);
+        Thread.sleep(2000);
+        wait = new WebDriverWait(driver, 100);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Accept')]"))).click();
+        Thread.sleep(10000);
         wait = new WebDriverWait(driver, 50);
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("new-idea-button"))).click();
-        wait = new WebDriverWait(driver, 50);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Accept')]"))).click();
-        Thread.sleep(7000);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//body[1]/div[5]/header[1]/div[1]/a[1]"))).click();
+//        Thread.sleep(10000);
+//        Actions actions = new Actions(driver);
+//        List<WebElement> lists = driver.findElements(By.cssSelector("button"));
+//        actions.click(lists.get(1)).perform();
+
+
+//        wait = new WebDriverWait(driver, 50);
+//        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Accept')]"))).click();
+        Thread.sleep(10000);
         List<WebElement> campaignDropdown = driver.findElements(By.cssSelector("[role=combobox]"));
         Actions action2 = new Actions(driver);
         action2.click(campaignDropdown.get(0)).perform();
-        Thread.sleep(2000);
+        Thread.sleep(10000);
         campaignDropdown.get(0).sendKeys(Keys.ARROW_DOWN);
         campaignDropdown.get(0).sendKeys(Keys.ENTER);
-
-        wait = new WebDriverWait(driver, 50);
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("idea-title-input"))).sendKeys("Hlw");
-//        TitleBox.click();
-//        TitleBox.sendKeys("hlw");
+        Thread.sleep(1000);
+        TitleBox.click();
+        TitleBox.sendKeys("Title");
         Thread.sleep(3000);
         DescriptionBox.sendKeys("this is description");
-//        Thread.sleep(7000);
+        Thread.sleep(5000);
         wait = new WebDriverWait(driver, 50);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[5]/div/div/div/article/form/div[4]/div/button"))).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//body[1]/div[5]/div[1]/div[1]/div[1]/article[1]/form[1]/div[4]/div[1]/button[1]"))).sendKeys(Keys.ENTER);
         wait = new WebDriverWait(driver, 50);
         wait.until(ExpectedConditions.elementToBeClickable(By.id("comment-text"))).sendKeys("This is good Idea");
+        wait = new WebDriverWait(driver, 50);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//body[1]/div[5]/div[1]/div[1]/div[1]/article[1]/div[7]/div[1]/div[1]/section[1]/div[1]/div[1]/form[1]/div[5]/input[1]"))).sendKeys(Keys.ENTER);
 
-        SubmitComment.click();
         return commentShow.getText();
     }
 }

@@ -10,7 +10,7 @@ public class IdeaSubmissionTestRunner extends Setup {
     IdeaSubmission objIdeaSubmission;
 
     @Test
-    public void doSubmitIdea() throws Exception {
+    public void SubmitIdea() throws Exception {
         objIdeaSubmission = new IdeaSubmission(driver);
         String result = objIdeaSubmission.Idea();
         Assert.assertTrue(result.contains("Title"));

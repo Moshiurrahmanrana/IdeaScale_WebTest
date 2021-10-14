@@ -10,7 +10,7 @@ public class CreateCampaignTestRunner extends Setup {
     CreateCampaign objCreateCampaign;
 
     @Test
-    public void doCreateCam() throws Exception {
+    public void CreateCamp() throws Exception {
         objCreateCampaign = new CreateCampaign(driver);
         String result = objCreateCampaign.doCreate();
         Assert.assertTrue(result.contains("Nothing"));

@@ -32,13 +32,14 @@ public class UpvoteIdea {
     WebElement SubmitBtn;
     @FindBy(xpath = "//*[@id=\"vote-up-380805\"]")
     WebElement upVoteBtn;
-    @FindBy(xpath = "//*[@id=\"main-content\"]/div/div/div[2]/article[1]/div[2]/section/div[1]/div[1]/strong")
+    @FindBy(xpath = "//body[1]/div[5]/div[1]/div[1]/div[1]/article[1]/div[5]/section[1]/div[1]/div[1]/strong[1]")
     WebElement count;
 
     public UpvoteIdea(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+
     public String upVote() throws InterruptedException {
         driver.get("https://trialqa.ideascale.com");
 
@@ -49,31 +50,37 @@ public class UpvoteIdea {
         passwordBox.sendKeys("a@123456#");
         Thread.sleep(2000);
         LogInBtn.click();
-        SubmitIdeaBtn.click();
-        wait = new WebDriverWait(driver, 50);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[4]/div/div/div[2]/div[1]/div/div[2]/button[2]")));
-        //Thread.sleep(10000);
-        Actions actions = new Actions(driver);
-        List<WebElement> lists = driver.findElements(By.cssSelector("button"));
-        actions.click(lists.get(1)).perform();
+        Thread.sleep(5000);
         wait = new WebDriverWait(driver, 50);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Accept')]"))).click();
+        Thread.sleep(10000);
+        wait = new WebDriverWait(driver, 50);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//body[1]/div[5]/header[1]/div[1]/a[1]"))).click();
+//        Thread.sleep(10000);
+//        Actions actions = new Actions(driver);
+//        List<WebElement> lists = driver.findElements(By.cssSelector("button"));
+//        actions.click(lists.get(1)).perform();
 
+
+//        wait = new WebDriverWait(driver, 50);
+//        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Accept')]"))).click();
+        Thread.sleep(10000);
         List<WebElement> campaignDropdown = driver.findElements(By.cssSelector("[role=combobox]"));
         Actions action2 = new Actions(driver);
         action2.click(campaignDropdown.get(0)).perform();
-        Thread.sleep(1000);
+        Thread.sleep(10000);
         campaignDropdown.get(0).sendKeys(Keys.ARROW_DOWN);
         campaignDropdown.get(0).sendKeys(Keys.ENTER);
         Thread.sleep(1000);
         TitleBox.click();
-        TitleBox.sendKeys("hlw");
+        TitleBox.sendKeys("Title");
         Thread.sleep(3000);
         DescriptionBox.sendKeys("this is description");
+        Thread.sleep(5000);
         wait = new WebDriverWait(driver, 50);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[5]/div/div/div/article/form/div[4]/div/button"))).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//body[1]/div[5]/div[1]/div[1]/div[1]/article[1]/form[1]/div[4]/div[1]/button[1]"))).sendKeys(Keys.ENTER);
         wait = new WebDriverWait(driver, 50);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"vote-up-380805\"]"))).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//body[1]/div[5]/div[1]/div[1]/div[1]/article[1]/div[5]/section[1]/div[1]/div[2]/a[1]"))).sendKeys(Keys.ENTER);
         return count.getText();
     }
 }

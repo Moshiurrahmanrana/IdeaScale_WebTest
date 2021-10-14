@@ -48,6 +48,7 @@ public class CreateCampaign {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+
     public String doCreate() throws InterruptedException {
         driver.get("https://trialqa.ideascale.com");
 
@@ -56,22 +57,33 @@ public class CreateCampaign {
         action.click(list.get(0)).perform();
         EmailBox.sendKeys("trialqa.ideascale@gmail.com");
         passwordBox.sendKeys("a@123456#");
+        //LogInBtn
+        wait = new WebDriverWait(driver, 50);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[5]/section/div/div/form/div[4]/button"))).click();
         Thread.sleep(2000);
-        LogInBtn.click();
         wait = new WebDriverWait(driver, 50);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Accept')]"))).click();
         Thread.sleep(10000);
+        wait = new WebDriverWait(driver, 50);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@class='is-svg-icon topbar-icon arrow-icon']"))).click();
-        CommunityBtn.click();
+        wait = new WebDriverWait(driver, 50);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"utb-user-menu\"]/ul/li[2]/a"))).click();
+//        CommunityBtn.click();
         ArrayList<String> w = new ArrayList<String>(driver.getWindowHandles());
         //switch to open tab
         driver.switchTo().window(w.get(1));
-        EngageBtn.click();
-        campaignsBtn.click();
+        wait = new WebDriverWait(driver, 50);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(),'Engagement')]"))).click();
+//        EngageBtn.click();
+        wait = new WebDriverWait(driver, 50);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(),'Campaigns')]"))).click();
+//        campaignsBtn.click();
 //        Thread.sleep(10000);
         ArrayList<String> h = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(h.get(2));
-        CreateCamBtn.click();
+        wait = new WebDriverWait(driver, 50);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[5]/div[1]/div/section/div[2]/div[1]/a[2]"))).click();
+//        CreateCamBtn.click();
         NameText.sendKeys("Nothing");
         saveBtn.click();
         ScheduleBtn.click();
